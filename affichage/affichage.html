@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Turtle MiniJeu</title>
+    <style>
+        header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem;
+        }
+        header img {
+            width: 250px;
+            height: 69px;
+            object-fit: contain;
+            margin: 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        /* updated styles for the niveaux area: title to the left of images */
+        .levels {
+            margin-left: auto; /* push to the right */
+            display: flex;              /* row layout */
+            align-items: center;        /* vertically center title + images */
+            gap: 0.5rem;                /* small gap between title and slot group */
+            font-family: sans-serif;
+        }
+        .levels-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0;                  /* keep title inline with images, no top/bottom gap */
+            white-space: nowrap;
+        }
+        .slots {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .slot {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            background: #f4f4f4;
+            object-fit: cover;
+            display: block;
+        }
+        .slot.identical {
+            /* visual hint that these are identical slots */
+            border-color: #7aa7ff;
+        }
+        .slot.unique {
+            border-color: #7fff9e;
+        }
+
+        /* cubes styles added */
+        .cubes {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .cube {
+            box-sizing: border-box;
+            border: 3px solid #333;
+            background: #eee;
+            flex: 0 0 auto;
+        }
+        /* Left cube: vertical layout to follow requested sequence */
+        .cube.left {
+            width: 318px;
+            height: 902px;
+            background: #dbeafe;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            gap: 8px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .cube.left .big-text {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.1;
+        }
+        .cube.left .row {
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            /* keep items on one line and allow them to shrink without wrapping */
+            flex-wrap: nowrap;
+        }
+        .cube.left img.slot-img {
+            /* make each image a flex item taking half the row (minus gap),
+               allow shrinking (min-width:0) so images don't force wrapping,
+               and use block to remove inline spacing issues */
+            flex: 0 1 calc(50% - 4px);
+            min-width: 0;
+            height: auto;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: white;
+            display: block;
+        }
+        .cube.left .spacer {
+            height: 12px; /* small fixed spacer */
+            width: 100%;
+        }
+        .cube.left .flex-spacer {
+            flex: 1 1 auto; /* grows to push the last image near the bottom */
+            width: 100%;
+        }
+        .cube.left .last-image {
+            width: 80%;
+            max-width: 240px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: white;
+        }
+
+        .cube.middle {
+            width: 960px;
+            height: 960px;
+            background: #fde68a;
+        }
+        .cube.right {
+            width: 318px;
+            height: 902px;
+            background: #dbeafe;
+        }
+
+        /* small-screen fallback to avoid overflow */
+        @media (max-width: 1400px) {
+            .cube.left, .cube.right, .cube.middle {
+                max-width: 100%;
+                height: auto;
+            }
+            .cube.left .flex-spacer { display: none; } /* avoid huge gaps on small screens */
+        }
+
+        /* responsive shrink if window is small */
+        @media (max-width: 640px) {
+            header img { width: 140px; height: auto; }
+            .slot { width: 32px; height: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://www.svup.ch/storage/app/media/membres/1617170703orif-logo-small.jpg" alt="logo de l'Orif.">
+        <h1>Pac-Man Pseudo-code</h1>
+
+        <!-- niveaux area with title left of the images -->
+        <div class="levels" aria-label="Niveaux">
+            <div class="levels-title">Niveaux</div>
+
+            <div class="slots" role="list">
+                <!-- 3 identical image slots -->
+                <img class="slot identical" role="listitem" src="https://via.placeholder.com/40?text=A" alt="Niveau identique A">
+                <img class="slot identical" role="listitem" src="https://via.placeholder.com/40?text=A" alt="Niveau identique A">
+                <img class="slot identical" role="listitem" src="https://via.placeholder.com/40?text=A" alt="Niveau identique A">
+
+                <!-- 5 unique image slots -->
+                <img class="slot unique" role="listitem" src="https://via.placeholder.com/40?text=1" alt="Niveau 1">
+                <img class="slot unique" role="listitem" src="https://via.placeholder.com/40?text=2" alt="Niveau 2">
+                <img class="slot unique" role="listitem" src="https://via.placeholder.com/40?text=3" alt="Niveau 3">
+                <img class="slot unique" role="listitem" src="https://via.placeholder.com/40?text=4" alt="Niveau 4">
+                <img class="slot unique" role="listitem" src="https://via.placeholder.com/40?text=5" alt="Niveau 5">
+            </div>
+        </div>
+    </header>
+
+    <!-- Cubes area: left & right = 318x902, middle = 960x960 -->
+    <section class="cubes" aria-label="Trois cubes">
+        <div class="cube left" role="img" aria-label="Cube gauche 318 par 902">
+            <!-- Sequence: big text, small spacer, text, image+image, spacer, text, image+image, large spacer, last image -->
+            <div class="big-text">TITRE IMPORTANT</div>
+
+            <div class="spacer" aria-hidden="true"></div>
+
+            <div class="text">Court paragraphe explicatif placé sous le grand titre.</div>
+
+            <div class="row" aria-hidden="false">
+                <img class="slot-img" src="https://via.placeholder.com/280x160?text=Img+1" alt="Image 1">
+                <img class="slot-img" src="https://via.placeholder.com/280x160?text=Img+2" alt="Image 2">
+            </div>
+
+            <div class="spacer" aria-hidden="true"></div>
+
+            <div class="text">Une autre ligne de texte pour séparer les images.</div>
+
+            <div class="row">
+                <img class="slot-img" src="https://via.placeholder.com/280x160?text=Img+3" alt="Image 3">
+                <img class="slot-img" src="https://via.placeholder.com/280x160?text=Img+4" alt="Image 4">
+            </div>
+
+            <div class="flex-spacer" aria-hidden="true"></div>
+
+            <img class="last-image" src="https://via.placeholder.com/360x180?text=Derniere+Image" alt="Image finale">
+        </div>
+
+        <div class="cube middle" role="img" aria-label="Cube central 960 par 960"></div>
+        <div class="cube right" role="img" aria-label="Cube droit 318 par 902"></div>
+    </section>
+</body>
+</html>
