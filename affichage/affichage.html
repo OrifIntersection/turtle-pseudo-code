@@ -1,145 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Turtle MiniJeu</title>
-    <style>
-        header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.5rem;
-        }
-        header img {
-            width: 250px;
-            height: 69px;
-            object-fit: contain;
-            margin: 0;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .levels {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: sans-serif;
-        }
-        .levels-title {
-            font-weight: 700;
-            font-size: 1rem;
-            margin: 0;
-            white-space: nowrap;
-        }
-        .slots {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-        .slot {
-            width: 40px;
-            height: 40px;
-        }
-
-        .cubes {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-        .cube {
-            box-sizing: border-box;
-            flex: 0 0 auto;
-        }
-        .cube.left {
-            width: 318px;
-            height: 902px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 16px;
-            gap: 8px;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-        .cube.left .big-text {
-            font-size: 28px;
-            font-weight: 700;
-            text-align: center;
-            line-height: 1.1;
-        }
-        .cube.left .row {
-            display: flex;
-            gap: 8px;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: nowrap;
-        }
-        .cube.left img.slot-img {
-            flex: 0 1 calc(50% - 4px);
-            min-width: 0;
-            height: auto;
-            object-fit: cover;
-            border-radius: 6px;
-            border: 1px solid rgba(0,0,0,0.08);
-            background: white;
-            display: block;
-        }
-        .cube.left .spacer {
-            height: 12px;
-            width: 100%;
-        }
-        .cube.left .flex-spacer {
-            flex: 1 1 auto;
-            width: 100%;
-        }
-        .cube.left .last-image {
-            width: 80%;
-            max-width: 240px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 6px;
-            border: 1px solid rgba(0,0,0,0.08);
-            background: white;
-        }
-
-        .cube.middle {
-            width: 960px;
-            height: 960px;
-        }
-        .cube.right {
-            width: 318px;
-            height: 902px;
-            background: #dbeafe;
-        }
-
-        @media (max-width: 1400px) {
-            .cube.left, .cube.right, .cube.middle {
-                max-width: 100%;
-                height: auto;
-            }
-            .cube.left .flex-spacer { display: none; }
-        }
-
-        /* responsive shrink if window is small */
-        @media (max-width: 640px) {
-            header img { width: 140px; height: auto; }
-            .slot { width: 32px; height: 32px; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/index.css" />
 </head>
-<body>
-    <header>
-        <img src="https://www.svup.ch/storage/app/media/membres/1617170703orif-logo-small.jpg" alt="logo de l'Orif.">
-        <h1>Pac-Man Pseudo-code</h1>
 
-        <div class="levels" aria-label="Niveaux">
+<body>
+
+    <header>
+        <section class="brand">
+            <div class="logo">
+                <img src="https://www.svup.ch/storage/app/media/membres/1617170703orif-logo-small.jpg"
+                    alt="logo de l'Orif.">
+            </div>
+            <h1>Pac-Man Pseudo-code</h1>
+        </section>
+
+        <section class="levels" aria-label="Niveaux">
             <div class="levels-title">Niveaux</div>
 
             <div class="slots" role="list">
@@ -155,41 +34,44 @@
                 <img class="slot unique" role="listitem" src="images/Niveau 7.svg" alt="Niveau 7">
                 <img class="slot unique" role="listitem" src="images/Niveau 8.svg" alt="Niveau 8">
             </div>
-        </div>
+        </section>
     </header>
 
-    <section class="cubes" aria-label="Trois cubes">
-        <div class="cube left" role="img" aria-label="Cube gauche 318 par 902">
-            <div class="big-text">Commandes disponibles</div>
 
-            <div class="spacer" aria-hidden="true"></div>
+    <div class="wrapper">
+        <aside class="available-commands">
+            <section>
+                <h2>Commandes disponibles</h2>
 
-            <div class="text">Actions</div>
+                <div class="spacer" aria-hidden="true"></div>
 
-            <div class="row" aria-hidden="false">
-                <pre>
-                <img class="slot-img" src="images/Commande disponible - Action 1.svg" alt="action 1">
-                <img class="slot-img" src="images/Commande disponible - Action 2.svg" alt="action 2">
-                </pre>
-            </div>
-            <div class="text">styles</div>
-            <div class="spacer" aria-hidden="true"></div>
+                <h3>Actions</h3>
 
-            <div class="row">
-                <pre>
-                <img class="slot-img" src="images/Commande disponible - Style 1.svg" alt="Style 1">
-                <img class="slot-img" src="images/Commande disponible - Style 2.svg" alt="Style 2">
-                </pre>
-            </div>
+                <div class="row" aria-hidden="false">
+                    <img class="slot-img" src="images/Commande disponible - Action 1.svg" alt="action 1">
+                    <img class="slot-img" src="images/Commande disponible - Action 2.svg" alt="action 2">
+                </div>
 
-            <div class="flex-spacer" aria-hidden="true"></div>
+                <h3>Styles</h3>
+                <div class="spacer" aria-hidden="true"></div>
 
-            <img class="last-image" src="images/Instructions - Bouton.svg" alt="Instructions">
-        </div>
+                <div class="row">
+                    <img class="slot-img" src="images/Commande disponible - Style 1.svg" alt="Style 1">
+                    <img class="slot-img" src="images/Commande disponible - Style 2.svg" alt="Style 2">
+                </div>
+            </section>
 
-        <div class="cube middle" role="img" aria-label="Cube central 960 par 960">
-            <img class="slot-img" src="images/Bloc Principal.svg" alt="jeu principale"style="float : none; width: 960px; height: 960px;">
-        <div class="cube right" role="img" aria-label="Cube droit 318 par 902"></div>
-    </section>
+            <section>
+                <img class="last-image" src="images/Instructions - Bouton.svg" alt="Instructions">
+            </section>
+        </aside>
+
+        <main>
+            <img class="slot-img" src="images/Bloc Principal.svg" alt="jeu principale">
+        </main>
+        <aside class="activated-commands">
+        </aside>
+    </div>
 </body>
+
 </html>
