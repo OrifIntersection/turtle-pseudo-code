@@ -53,14 +53,11 @@
         }
         .cube {
             box-sizing: border-box;
-            border: 3px solid #333;
-            background: #eee;
             flex: 0 0 auto;
         }
         .cube.left {
             width: 318px;
             height: 902px;
-            background: #dbeafe;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -115,7 +112,6 @@
         .cube.middle {
             width: 960px;
             height: 960px;
-            background: #fde68a;
         }
         .cube.right {
             width: 318px;
@@ -171,15 +167,19 @@
             <div class="text">Actions</div>
 
             <div class="row" aria-hidden="false">
+                <pre>
                 <img class="slot-img" src="images/Commande disponible - Action 1.svg" alt="action 1">
                 <img class="slot-img" src="images/Commande disponible - Action 2.svg" alt="action 2">
+                </pre>
             </div>
             <div class="text">styles</div>
             <div class="spacer" aria-hidden="true"></div>
 
             <div class="row">
+                <pre>
                 <img class="slot-img" src="images/Commande disponible - Style 1.svg" alt="Style 1">
                 <img class="slot-img" src="images/Commande disponible - Style 2.svg" alt="Style 2">
+                </pre>
             </div>
 
             <div class="flex-spacer" aria-hidden="true"></div>
@@ -187,7 +187,8 @@
             <img class="last-image" src="images/Instructions - Bouton.svg" alt="Instructions">
         </div>
 
-        <div class="cube middle" role="img" aria-label="Cube central 960 par 960"></div>
+        <div class="cube middle" role="img" aria-label="Cube central 960 par 960">
+            <img class="slot-img" src="images/Bloc Principal.svg" alt="jeu principale"style="float : none; width: 960px; height: 960px;">
         <div class="cube right" role="img" aria-label="Cube droit 318 par 902"></div>
     </section>
 </body>
