@@ -1,155 +1,101 @@
-    header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 0.5rem;
-    }
+body {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-    header img {
-        width: 250px;
-        height: 69px;
-        object-fit: contain;
-        margin: 0;
-    }
+body>header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    border-bottom: solid 1px #eee;
+}
 
-    header h1 {
-        margin: 0;
-        font-size: 1.5rem;
-    }
+.brand{
+    display:flex;
+    align-items:center;
+    padding:16px;
+}
 
-    .levels {
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-family: sans-serif;
-    }
+.brand .logo{
+    height:100%;
+}
 
-    .levels-title {
-        font-weight: 700;
-        font-size: 1rem;
-        margin: 0;
-        white-space: nowrap;
-    }
+.brand .logo img{
+    height:100%;
+    width:auto;
+}
 
-    .slots {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-    }
+.brand h1{ 
+    font-size:24px;
+}
 
-    .slot {
-        width: 40px;
-        height: 40px;
-    }
+.levels{
+    display:flex;
+    align-items:center;
+    padding:16px;
+}
 
-    .cubes {
-        display: flex;
-        gap: 16px;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-    }
+.levels .slots{
+    padding-left:16px;
+}
 
-    .cube {
-        box-sizing: border-box;
-        flex: 0 0 auto;
-    }
+body>.contours {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+}
 
-    .cube.left {
-        width: 318px;
-        height: 902px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 16px;
-        gap: 8px;
-        box-sizing: border-box;
-        overflow: hidden;
-    }
+.contours > aside{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:240px;
+    height:100%;    
+}
 
-    .cube.left .big-text {
-        font-size: 28px;
-        font-weight: 700;
-        text-align: center;
-        line-height: 1.1;
-    }
+.contours > aside img{
+    width:100%;
+    height:auto;
+}
+.contours > aside:first-child{
+    border-right:solid 1px #eee;
+}
 
-    .cube.left .row {
-        display: flex;
-        gap: 8px;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-    }
+.contours > aside:last-child{  
+    border-left:solid 1px #eee;
+}
 
-    .cube.left img.slot-img {
-        flex: 0 1 calc(50% - 4px);
-        min-width: 0;
-        height: auto;
-        object-fit: cover;
-        border-radius: 6px;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        display: block;
-        background: white;
-    }
+aside > section {
+    padding: 0 16px;
+}
 
-    .cube.left .spacer {
-        height: 12px;
-        width: 100%;
-    }
 
-    .cube.left .flex-spacer {
-        flex: 1 1 auto;
-        width: 100%;
-    }
+.contours > main{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;    
+    flex:1;
+    overflow:hidden;
+}
 
-    .cube.left .last-image {
-        width: 80%;
-        max-width: 240px;
-        height: auto;
-        object-fit: cover;
-        border-radius: 6px;
-        margin-bottom: 6px;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        background: white;
-    }
-
-    .cube.middle {
-        width: 960px;
-        height: 960px;
-    }
-
-    .cube.right {
-        width: 318px;
-        height: 902px;
-        background: #dbeafe;
-    }
-
-    @media (max-width: 1400px) {
-
-        .cube.left,
-        .cube.right,
-        .cube.middle {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .cube.left .flex-spacer {
-            display: none;
-        }
-    }
-
-    /* responsive shrink if window is small */
-    @media (max-width: 640px) {
-        header img {
-            width: 140px;
-            height: auto;
-        }
-
-        .slot {
-            width: 32px;
-            height: 32px;
-        }
-    }
+.contours > main img{
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
