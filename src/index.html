@@ -6,6 +6,39 @@
     <title>Turtle MiniJeu</title>
     <link rel="stylesheet" href="assets/styles/index.css" />
     <script src="assets/scripts/main.js" defer></script>
+    <script defer>
+        window.onload = () => {
+
+            (async () => {
+
+
+                console.log("Test")
+                await injectBodyFromUrl("./modules/level-pills/completed-level-pill.html", "#level-pills");
+                await injectBodyFromUrl("./modules/level-pills/completed-level-pill.html", "#level-pills");
+                await injectBodyFromUrl("./modules/level-pills/completed-level-pill.html", "#level-pills");
+                await injectBodyFromUrl("./modules/level-pills/current-level-pill.html", "#level-pills");
+                await injectBodyFromUrl("./modules/level-pills/locked-level-pill.html", "#level-pills");
+                await injectBodyFromUrl("./modules/level-pills/locked-level-pill.html", "#level-pills");
+                await injectBodyFromUrl("./modules/level-pills/locked-level-pill.html", "#level-pills");
+                await injectBodyFromUrl("./modules/level-pills/locked-level-pill.html", "#level-pills");
+
+                await injectBodyFromUrl("./modules/commands/available-command.html", "#available-action-commands");
+                await injectBodyFromUrl("./modules/commands/available-command.html", "#available-action-commands");
+
+                await injectBodyFromUrl("./modules/commands/available-command.html", "#available-styles-commands");
+                await injectBodyFromUrl("./modules/commands/available-command.html", "#available-styles-commands");
+
+                await injectBodyFromUrl("./modules/action-buttons/instructions-action-button.html", "#instructions-action-button");
+                await injectBodyFromUrl("./modules/action-buttons/play-action-button.html", "#play-action-button");
+
+                await injectBodyFromUrl("./modules/commands/active-command.html", "#active-commands");
+                await injectBodyFromUrl("./modules/commands/active-command.html", "#active-commands");
+                await injectBodyFromUrl("./modules/commands/active-command.html", "#active-commands");
+                await injectBodyFromUrl("./modules/commands/active-command.html", "#active-commands");
+
+            })();
+        }
+    </script>
 </head>
 
 <body>
@@ -21,19 +54,7 @@
         <section class="levels" aria-label="Niveaux">
             <div class="levels-title">Niveaux</div>
 
-            <div class="slots" role="list">
-                <!-- Images identiques -->
-                <img class="slot identical" role="listitem" src="assets/images/Niveau 1 (1).svg" alt="Checkmark">
-                <img class="slot identical" role="listitem" src="assets/images/Niveau 1 (1).svg" alt="Checkmark">
-                <img class="slot identical" role="listitem" src="assets/images/Niveau 1 (1).svg" alt="Checkmark">
-
-                <!-- Images uniques -->
-                <img class="slot unique" role="listitem" src="assets/images/Niveau 4.svg" alt="Niveau en cours">
-                <img class="slot unique" role="listitem" src="assets/images/Niveau 5.svg" alt="Niveau 5">
-                <img class="slot unique" role="listitem" src="assets/images/Niveau 6.svg" alt="Niveau 6">
-                <img class="slot unique" role="listitem" src="assets/images/Niveau 7.svg" alt="Niveau 7">
-                <img class="slot unique" role="listitem" src="assets/images/Niveau 8.svg" alt="Niveau 8">
-            </div>
+            <div id="level-pills" class="slots" role="list"></div>
         </section>
     </header>
 
@@ -47,23 +68,15 @@
 
                 <h3>Actions</h3>
 
-                <div class="row" aria-hidden="false">
-                    <img class="slot-img" src="assets/images/Commande disponible - Action 1.svg" alt="action 1">
-                    <img class="slot-img" src="assets/images/Commande disponible - Action 2.svg" alt="action 2">
-                </div>
+                <div id="available-action-commands" class="row" aria-hidden="false"></div>
 
                 <h3>Styles</h3>
                 <div class="spacer" aria-hidden="true"></div>
 
-                <div class="row">
-                    <img class="slot-img" src="assets/images/Commande disponible - Style 1.svg" alt="Style 1">
-                    <img class="slot-img" src="assets/images/Commande disponible - Style 2.svg" alt="Style 2">
-                </div>
+                <div id="available-styles-commands" class="row"></div>
             </section>
 
-            <section>
-                <img class="last-image" src="assets/images/Instructions - Bouton.svg" alt="Instructions">
-            </section>
+            <section id="instructions-action-button"></section>
         </aside>
 
         <main>
@@ -77,21 +90,10 @@
 
                 <h3>Niveau 4</h3>
 
-                <div class="row" aria-hidden="false">
-                    <img class="slot-img" src="assets/images/Commande active 1.svg" alt="Tourner à gauche">
-                    <img class="slot-img" src="assets/images/Commande active 2.svg" alt="avancer de 1 pas">
-                </div>
-                <div class="spacer" aria-hidden="true"></div>
-
-                <div class="row">
-                    <img class="slot-img" src="assets/images/Commande active 3.svg" alt="Tourner à gauche">
-                    <img class="slot-img" src="assets/images/Commande active 4.svg" alt="avancer de 2 pas">
-                </div>
+                <div id="active-commands" class="row" aria-hidden="false"></div>
             </section>
 
-            <section>
-                <img class="last-image" src="assets/images/Lancer le code - Bouton.svg" alt="Start code">
-            </section>
+            <section id="play-action-button"></section>
         </aside>
     </div>
 </body>
