@@ -102,4 +102,8 @@ aside > section {
 
 .container {
     display: flex;
+    position: absolute;
+    border-color:rgba(14, 92, 165, 0.651);
+    border-style: solid;
+    border-radius: 20px;
 }
