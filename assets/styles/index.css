@@ -99,3 +99,7 @@ aside > section {
     height:100%;
     object-fit: cover;
 }
+
+.container {
+    display: flex;
+}
