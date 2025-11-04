@@ -107,3 +107,11 @@ aside > section {
     border-style: solid;
     border-radius: 20px;
 }
+
+.Instruction {
+    display: flex;
+    position: absolute;
+    border-color:rgba(192, 190, 190, 0.3);
+    border-style: solid;
+    border-radius: 20px;
+}
