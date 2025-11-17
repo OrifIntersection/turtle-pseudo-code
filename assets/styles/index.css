@@ -123,6 +123,11 @@ aside > section {
     cursor: pointer;
 }
 
+a.fix {
+    text-decoration: none;    
+
+}
+
 .start {
     display: flex;
 
