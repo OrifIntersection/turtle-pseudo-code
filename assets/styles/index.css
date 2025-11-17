@@ -117,6 +117,12 @@ aside > section {
     cursor: pointer;
 }
 
+.container > select {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 .start {
     display: flex;
 
